@@ -1,0 +1,79 @@
+.signin {
+  background-color: $primary;
+  min-height: 100vh;
+  width: 100%;
+
+  @include center__flex;
+
+  &__box {
+    background-color: white;
+    width: 60%;
+    min-height: 80vh;
+
+    display: flex;
+  }
+
+  &__left {
+    width: 100%;
+    height: 80vh;
+    overflow: hidden !important;
+    img,
+    span {
+      height: 100% !important;
+      // width: 100% !important;
+    }
+  }
+
+  &__right {
+    width: 100%;
+    @include center__flex;
+  }
+
+  &__form {
+    text-align: center;
+    // background-color: aliceblue;
+    width: 55%;
+    min-height: 25rem;
+    // height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  &__welcome {
+    // font-size: smaller;
+    letter-spacing: 2px;
+    font-family: inherit;
+    font-size: 1.8rem;
+  }
+
+  &__reset {
+    margin-top: -0.5rem;
+    margin-left: auto;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: blue;
+    cursor: pointer;
+  }
+
+  &__btn {
+    // border: none;
+    font-family: inherit;
+    margin-top: 1rem;
+    border-radius: 20rem;
+    padding: 0.6rem 2rem;
+    align-self: center;
+    background-color: $primary;
+    color: white;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+
+  &__btn:hover {
+    border: 1px solid $primary;
+    background-color: lighten($primary, 15%);
+    // font-weight: 600;
+  }
+}

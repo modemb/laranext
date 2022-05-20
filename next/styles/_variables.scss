@@ -1,0 +1,20 @@
+$text-color: #444;
+$bottom-line: #e0e0e044;
+$line: #e0e0e095;
+$primary: #463f3a;
+
+
+$nav-height: 6rem;
+
+$shadow: 0 2rem 6rem rgb(0 0 0 / 30%);
+
+@mixin center__flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin center__margin {
+  margin-left: auto;
+  margin-right: auto;
+}
