@@ -27,6 +27,7 @@
   &__right {
     width: 100%;
     @include center__flex;
+    flex-direction: column;
   }
 
   &__form {
@@ -38,6 +39,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+
+    a {
+      color: blue;
+    }
   }
 
   &__welcome {
@@ -48,7 +53,8 @@
   }
 
   &__reset {
-    margin-top: -0.5rem;
+    margin-top: .2rem;
+    // margin-top: -0.5rem;
     margin-left: auto;
     font-size: 1rem;
     letter-spacing: 2px;
@@ -75,5 +81,11 @@
     border: 1px solid $primary;
     background-color: lighten($primary, 15%);
     // font-weight: 600;
+  }
+
+  &__account {
+    margin-top: 2rem;
+    margin-left: auto;
+    font-size: 1.2rem;
   }
 }

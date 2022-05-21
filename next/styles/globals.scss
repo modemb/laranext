@@ -29,11 +29,8 @@ body {
   // width: 100%;
 }
 
-// .MuiInput-input {
-//   letter-spacing: 2px !important;
-//   width: 80% !important;
-//   // font-family: inherit;
-//   // padding: 1rem;
+// .MuiInput-root:last-child {
+//   margin-bottom: 1rem;
 // }
 
 .MuiInputLabel-root {
@@ -41,6 +38,14 @@ body {
   font-family: inherit;
   letter-spacing: 2px;
   font-size: 1.2rem;
+
   // outline:1px solid $primary;
 }
 
+a,
+a:active,
+a:visited,
+a:link {
+  color: inherit;
+  text-decoration: inherit;
+}

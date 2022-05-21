@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import signinImage from "../public/imagesignin.jpg";
 import { TextField } from "@mui/material";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
           </div>
           <div className={styles["signin__right"]}>
             <form className={styles["signin__form"]}>
-              <p className={styles["signin__welcome"]}>Welcome to Laranext</p>
+              <p className={styles["signin__welcome"]}>Sign in to Laranext</p>
 
               <TextField
                 id="email"
@@ -38,7 +39,6 @@ const Home: NextPage = () => {
                 type="text"
                 // autoComplete="current-password"
                 variant="standard"
-                
                 autoComplete="off"
               />
               <TextField
@@ -54,6 +54,10 @@ const Home: NextPage = () => {
               <button type="submit" className={styles["signin__btn"]}>
                 Sign in
               </button>
+
+              <p className={styles["signin__account"]}>
+                New user? Create a new <Link href="/register"> Account </Link>
+              </p>
             </form>
           </div>
         </section>
