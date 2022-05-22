@@ -47,10 +47,20 @@ const Home: NextPage = () => {
     },
   });
 
-  const mutation = useMutation((signup: ISignup) => {
-    return axios.post("http://localhost:3000/api/register", signup);
-  });
+  const mutation = useMutation(
+    (signup: ISignup) => {
+      return axios.post("http://larasar.modemb.com/api/register", signup);
+    },
+    {
+      onSuccess: data => {
+        console.log(data);
+      },
+    }
+  );
 
+  if (mutation.isIdle) {
+    console.log(mutation.status);
+  }
   return (
     <div>
       <Head>
