@@ -10,7 +10,7 @@ import { useMutation } from "react-query";
 import { Formik, Field, Form, ErrorMessage, useFormik } from "formik";
 import axios from "axios";
 
-export interface ISignup {
+interface ISignup {
   firstname: string;
   lastname: string;
   email: string;
@@ -65,8 +65,6 @@ const Home: NextPage = () => {
             <Image
               src={signinImage}
               alt="Picture of the author"
-              // width={400}
-              // height={400}
               blurDataURL="data:..."
               placeholder="blur" // Optional blur-up while loading
               priority
@@ -82,7 +80,6 @@ const Home: NextPage = () => {
                 name="firstname"
                 label="Firstname"
                 type="text"
-                // autoComplete="current-password"
                 variant="standard"
                 autoComplete="off"
                 value={formik.values.firstname}
@@ -95,7 +92,6 @@ const Home: NextPage = () => {
                 name="lastname"
                 label="Lastname"
                 type="text"
-                // autoComplete="current-password"
                 variant="standard"
                 autoComplete="off"
                 value={formik.values.lastname}
@@ -108,7 +104,6 @@ const Home: NextPage = () => {
                 name="email"
                 label="Email"
                 type="email"
-                // autoComplete="current-password"
                 variant="standard"
                 autoComplete="off"
                 value={formik.values.email}
@@ -154,8 +149,6 @@ const Home: NextPage = () => {
           </div>
         </section>
       </main>
-
-      {/* <footer className={styles.footer}></footer> */}
     </div>
   );
 };

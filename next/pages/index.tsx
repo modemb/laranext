@@ -5,8 +5,40 @@ import styles from "../styles/Home.module.scss";
 import signinImage from "../public/imagesignin.jpg";
 import { TextField } from "@mui/material";
 import Link from "next/link";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { useMutation } from "react-query";
+import axios from "axios";
+
+export interface ISignin {
+  email: string;
+  password: string;
+}
+
+const initialValues: ISignin = {
+  email: "",
+  password: "",
+};
+
+const validationSchema = Yup.object({
+  email: Yup.string().email("Invalid email address").required("Required"),
+  password: Yup.string().min(5, "Must be at least five characteres").required("Required"),
+});
 
 const Home: NextPage = () => {
+  const formik = useFormik({
+    initialValues,
+    validationSchema: validationSchema,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+      mutation.mutate(values);
+    },
+  });
+
+  const mutation = useMutation((signup: ISignin) => {
+    return axios.post("http://localhost:3000/api/register", signup);
+  });
+
   return (
     <div>
       <Head>
@@ -21,8 +53,6 @@ const Home: NextPage = () => {
             <Image
               src={signinImage}
               alt="Picture of the author"
-              // width={400}
-              // height={400}
               blurDataURL="data:..."
               placeholder="blur" // Optional blur-up while loading
               priority
@@ -30,23 +60,32 @@ const Home: NextPage = () => {
             />
           </div>
           <div className={styles["signin__right"]}>
-            <form className={styles["signin__form"]}>
+            <form className={styles["signin__form"]} onSubmit={formik.handleSubmit}>
               <p className={styles["signin__welcome"]}>Sign in to Laranext</p>
 
               <TextField
                 id="email"
+                name="email"
                 label="Email"
-                type="text"
-                // autoComplete="current-password"
+                type="email"
                 variant="standard"
                 autoComplete="off"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
               <TextField
-                id="filled-password-input"
+                id="password"
+                name="password"
                 label="Password"
                 type="password"
                 autoComplete="current-password"
                 variant="standard"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={formik.touched.password && Boolean(formik.errors.password)}
+                helperText={formik.touched.password && formik.errors.password}
               />
 
               <p className={styles["signin__reset"]}>Forget password?</p>
@@ -62,8 +101,6 @@ const Home: NextPage = () => {
           </div>
         </section>
       </main>
-
-      {/* <footer className={styles.footer}></footer> */}
     </div>
   );
 };
