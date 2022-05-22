@@ -24,22 +24,20 @@ body {
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.6rem;
   color: $text-color;
-
-  // min-height: 100vh;
-  // width: 100%;
 }
 
-// .MuiInput-root:last-child {
-//   margin-bottom: 1rem;
-// }
+.css-1ptx2yq-MuiInputBase-root-MuiInput-root:after {
+  border-bottom: 2px solid $primary;
+}
 
 .MuiInputLabel-root {
-  // padding-left: 2rem;
   font-family: inherit;
   letter-spacing: 2px;
   font-size: 1.2rem;
+}
 
-  // outline:1px solid $primary;
+.MuiFormLabel-root.Mui-focused {
+  color: $primary !important;
 }
 
 a,

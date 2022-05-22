@@ -36,7 +36,7 @@ const Home: NextPage = () => {
   });
 
   const mutation = useMutation((signup: ISignin) => {
-    return axios.post("http://localhost:3000/api/register", signup);
+    return axios.post("http://localhost:3000/api/login", signup);
   });
 
   return (
