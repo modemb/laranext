@@ -1,64 +1,140 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Quasar App (client) & Laravel Backend (server)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel + Quasar Vue Framework App
 
-## About Laravel
+<https://github.com/modemb/larasar>
+<https://www.facebook.com/suguffie>
+<https://github.com/quasarframework/quasar-awesome#projects-using-quasar>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Install the dependencies
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```bash
+# composer require laravel/jetstream #Installing Jetstream https://jetstream.laravel.com/2.x/installation.html
+# php artisan jetstream:install livewire --teams
+# php artisan jetstream:install inertia --teams
+# composer require laravel/passport
+composer install
+php artisan passport:install / If No Key - php artisan passport:keys
+cp .env.example .env
+php artisan key:generate
+npm install && npm run dev
+```
+### Start the app in development mode (hot-code reloading, error reporting, etc.)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```bash
+php artisan serve
+quasar dev
+quasar dev -m ssr
+quasar dev -m pwa
+quasar dev -m bex
+quasar dev -m capacitor -T android|ios
+quasar dev -m android|ios
+quasar dev -m electron
+quasar dev -m ios -- some params --and options --here
+quasar dev -m electron -- --no-sandbox --disable-setuid-sandbox
+```
+### Lint the files
 
-## Learning Laravel
+```bash
+npm run lint
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Build the app for production
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+quasar build
+quasar build -m ssr
+quasar build -m pwa
+quasar build -m bex
+quasar build -m capacitor -T android|ios
+quasar build -m android|ios
+quasar build -m electron
+quasar build -m ios -- some params --and options --here
+quasar build -m electron -- --no-sandbox --disable-setuid-sandbox
+```
 
-## Laravel Sponsors
+## Testing - Manuel (QA) - Automatic (CI/CD) 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Laravel <https://laravel.com/docs/9.x/testing#introduction>
+        <https://laravel.com/docs/9.x/dusk>
+Quasar <https://testing.quasar.dev/>
+       <https://quasar.dev/quasar-cli/testing-and-auditing#introduction>
 
-### Premium Partners
+### PWA Icons Generate
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```bash
+yarn global add @quasar/icongenie
+icongenie g -i public/images/backup/suguffie.png
+```
+### Cordova Setup: Android Studio – Configure – Default Project Structure
 
-## Contributing
+Windows
+In Search, search for and then Click Environment Variables. ...
+In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. ...
+Reopen Command prompt window, and run your java code.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+export ANDROID_HOME='D:\Projects\Android\android-sdk'
+export ANDROID_SDK_ROOT='D:\Projects\Android\android-sdk'
+export JAVA_HOME='E:\Apps\Android\Android Studio\jre'
+export JAVA_HOME='C:\Program Files\Java\jdk-17.0.2'
+```
+### Developing Mobile Apps
+<https://quasar.dev/quasar-cli/developing-mobile-apps>
 
-## Code of Conduct
+### Publishing to Store 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<https://quasar.dev/quasar-cli/developing-capacitor-apps/publishing-to-store>
 
-## Security Vulnerabilities
+<https://quasar.dev/quasar-cli/developing-cordova-apps/publishing-to-store#Introduction>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Navigate to the folder that contains keytool.exe or add this folder to your path
 
-## License
+## Open a Command Prompt window running as an administrator
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cd 'E:\Apps\Android\Android Studio\jre\jre\bin'
+keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 20000
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore 'D:\Projects\wamp\www\larasar\dist\cordova\android\apk\release' alias_name
+```
+
+## To open the AVD Manager, do one of the following:
+Select Tools > AVD Manager.
+Click AVD Manager in the toolbar.
+
+### Customize the configuration
+
+See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+
+## Create Update Columns From AddColumnsToTable
+
+https://laravel.com/docs/9.x/migrations#columns
+php artisan migrate
+
+## Comment Flow
+
+Backend: Routes -> Controllers - Frontend: Blade -> Vue
+
+## Features
+
+- [x] CRUDAction Reusable State Management
+- [x] Realtime (Chat, Push/Notification)
+- [x] Users Authentication by Roles
+- [x] Weather Location Distance
+- [x] All Platforms in One Go
+- [x] Super Admin ID = 1
+- [x] Email Verification
+- [x] State Management
+- [x] Users Analytics
+- [x] Form Validation
+- [x] Password Reset
+- [x] Live Migration 
+- [x] Users Sessions
+- [x] Social Login
+- [x] Share Button
+- [x] Soft Delete
+- [x] File upload  
+- [x] Cron jobs
+- [x] ipDebug
+- [x] Payment
+- [x] CMS

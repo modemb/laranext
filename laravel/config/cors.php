@@ -15,11 +15,13 @@ return [
     |
     */
 
+    // 'paths' => ['*'],
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    // 'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout', 'register', 'password/email', 'password/reset', 'email/verify/*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => [config('app.dev')?'*':env('API_URL'), env('APP_URL')],
 
     'allowed_origins_patterns' => [],
 
@@ -29,6 +31,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];

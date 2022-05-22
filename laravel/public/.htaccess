@@ -5,6 +5,23 @@
 
     RewriteEngine On
 
+    #Production Server
+    # RewriteBase /
+
+    # HTTPS
+    # RewriteCond %{HTTPS} !=on
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Current Server
+    RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
+    RewriteRule ^(.*)$ - [E=BASE:%1]
+    #redirect in-existent files/calls to index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule . %{ENV:BASE}/index.php [L]
+
+    #Local Server
+    # RewriteBase /www/larasar/public
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+$dev = $app->runningInConsole()?:(url('/')==env('API_URL')?0:1);
 
 return [
 
@@ -15,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Suguffie'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+
+    'dev' => $dev,
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +59,9 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'asset_url' => env('ASSET_URL'),
+    'frontend_url' => env('FRONTEND_URL', 'http://localhost:3000'), // breeze_api
+
+    'asset_url' => env('ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -83,6 +88,22 @@ return [
     */
 
     'locale' => 'en',
+
+    'locales' => $dev ? [
+      'en' => 'EN',
+      'es' => 'ES',
+      'fr' => 'FR',
+      'pt-BR' => 'BR',
+      'ar' => 'العربية',
+      'zh-CN' => '中文'
+    ] : [ // Production
+      'en' => 'EN',
+      'es' => 'ES',
+      'fr' => 'FR',
+      'pt-BR' => 'BR',
+      'ar' => 'العربية',
+      'zh-CN' => '中文'
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -127,24 +148,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Maintenance Mode Driver
-    |--------------------------------------------------------------------------
-    |
-    | These configuration options determine the driver used to determine and
-    | manage Laravel's "maintenance mode" status. The "cache" driver will
-    | allow maintenance mode to be controlled across multiple machines.
-    |
-    | Supported drivers: "file", "cache"
-    |
-    */
-
-    'maintenance' => [
-        'driver' => 'file',
-        // 'store'  => 'redis',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -185,15 +188,19 @@ return [
         /*
          * Package Service Providers...
          */
+        NotificationChannels\WebPush\WebPushServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class,
 
     ],
 
@@ -209,7 +216,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+      'Image' => Intervention\Image\Facades\Image::class
     ])->toArray(),
 
 ];
